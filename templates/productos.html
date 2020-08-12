@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% load static %} }
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+</head>
+<body>
+{% block content %}
+    <h1> Bienvenido Farmacia </h1>
+    <div>
+        <ul class="Menu">
+          <li>   <a href="{%url 'descripcion'%}">paracetamol</a>              </li>
+            <img src="{% static 'img/estatic.jpg' %}">
+          <li>   <a href="{%url 'descripcion'%}">azitromicina</a> </li>
+            <img src="{% static 'img/azito.jpg' %}">
+            <li>   <a href="{%url 'descripcion'%}">buprex</a> </li>
+            <img src="{% static 'img/Buprex-Forte.png' %}">
+            <li>   <a href="{%url 'descripcion'%}">garamicina</a> </li>
+            <img src="{% static 'img/garamicina.jpg' %}">
+            <li>   <a href="{%url 'descripcion'%}">fisiol</a> </li>
+            <img src="{% static 'img/fisiol.jpg' %}">
+
+       </ul>
+    </div>
+
+        <h3> {{ mensaje }}</h3>
+        <h3> {{ titulo }}</h3>
+    <ul class="List-group">
+        {%  for i in medicamentos %}
+             <li class="List-group-item">{{ i.descripcion }} </li>
+             {% if i.stock %}
+                  <span class="text-success"> Disponible </span>
+             {% else  %}
+                  <span class="text-danger"> No Disponible</span>
+             {%  endif %}
+        {% endfor %}
+    </ul>
+{%endblock %}
+
+
+</body>
+</html>
